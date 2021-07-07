@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html> 
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Refresh" content="3" />
+<title>Отгрузка продукции ТЭП-50</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+ <h1>Отгрузка продукции</h1>
+ <h4>Дата: <?php echo date("d.m.Y H:i:s"); ?></h4>
+ 
+<div id="orders_work">
+	<?php 
+		$conn = odbc_connect ("WMSDB_TEST", "wms_test", "oracle");
+		$sql_work = "select o.ID, o.DATE_TO_SHIP, s.EXT_NAME, loc.NAME, o.COMPLETE, o.COMMENTS2, o.DATE_STARTED, o.CREATED_BY 
+		from orders o 
+		left join STATUS s on (s.name=o.status)
+		left join LOCATION loc on (loc.id=o.dock)
+		where o.STATUS='P';";
+		$rs_work = odbc_exec($conn,$sql_work);
+		$dts_work = odbc_result($rs_work,2);
+		$status_work = odbc_result($rs_work,3);
+		$status_utf_work = iconv('Windows-1251','UTF-8', $status_work);
+		$ds_work= odbc_result($rs_work,7);	
+	?>
+ <table>
+ <h3>Заказы в работе:</h3>
+ <tr><th>№ Заказа</th>
+	 <th>Планируемая отгрузка</th>
+	 <th>Статус</th>
+	 <th>Док</th>
+	 <th>Собран %</th>
+	 <th>Комментарий</th>
+	 <th>Запущен</th>
+	 <th>Создал</th>
+ </tr>
+ <tr>
+	 <td><?php echo odbc_result($rs_work,1); ?></td>
+	 <td><?php echo date('d.m.Y H:i:s', $dts_work); ?></td>
+	 <td><?php echo "".$status_utf_work;?></td>
+	 <td><?php echo "".odbc_result($rs_work,4);?></td>
+	 <td><?php echo "".odbc_result($rs_work,5);?></td>
+	 <td><?php echo "".odbc_result($rs_work,6);?></td>
+	 <td><?php echo date('d.m.Y H:i:s', $ds_work); ?></td>
+	 <td><?php echo "".odbc_result($rs_work,8);?></td>
+ </tr>
+ </table>
+</div>
+<?php odbc_close($conn); ?>
+</body>
+ </html>

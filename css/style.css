@@ -1,0 +1,49 @@
+h1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 40px;
+	color: #008080;
+}
+
+h3 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+}
+.work, .shipped {
+	font-family: Arial, Helvetica, sans-serif;
+	text-shadow: 1px 1px 0px #fff;
+	border-collapse: separate;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	-moz-box-shadow: 0 1px 2px #d1d1d1;
+	-webkit-box-shadow: 0 1px 2px #d1d1d1;
+	box-shadow: 0 1px 2px #d1d1d1;
+
+}
+
+
+th {
+	font-size: 18px;
+	font-weight:bold;
+	color: #f2f2f2;
+	padding:10px 25px 10px 25px;
+	border-top:1px solid #fafafa;
+	border-bottom:1px solid #e0e0e0;
+	background: #008080;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+	background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
+
+}
+td {
+	background: #e5f2f2;
+	font-size: 16px;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+}
+#orders_work {
+	margin-top: 50px;
+}
+
+#orders_shipped {
+	margin-top: 50px;
+}
