@@ -12,7 +12,7 @@
  
 <div id="orders_work">
 	<?php 
-		$conn = odbc_connect ("WMSDB_TEST", "wms_test", "oracle");
+		$conn = odbc_connect ("WMSDB_TEST", "wms_test", "password");
 		$sql_work = "select o.ID, o.DATE_TO_SHIP, s.EXT_NAME, loc.NAME, o.COMPLETE, o.COMMENTS2, o.DATE_STARTED, o.CREATED_BY 
 		from orders o 
 		left join STATUS s on (s.name=o.status)
