@@ -4,7 +4,7 @@
 <div id="worker_move">
 <h3>Количество перемещений груза:</h3>
 	<?php 
-		$conn = odbc_connect ("WMSDB", "wms", "oracle");
+		$conn = odbc_connect ("WMSDB", "wms", "password");
 		$sql_work = "select al.OP_TYPE_NAME, al.OPERATOR, count(*)operator, w.NAME, w.FIO
 					from ACTIVITY_LOG al, worker w
 					where al.OP_TIME > (select to_date(sysdate) from dual) AND al.WMS_WHS_ID=0 AND al.op_type_name='mls_move_load'
