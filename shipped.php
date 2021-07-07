@@ -9,7 +9,7 @@
 <body>
 <div id="orders_shipped">
 <?php 
-$conn1 = odbc_connect ("WMSDB_TEST", "wms_test", "oracle");
+$conn1 = odbc_connect ("WMSDB_TEST", "wms_test", "password");
 $sql_shipped = "select o.ID, o.DATE_SHIPPED, s.EXT_NAME, loc.NAME, o.COMMENTS2
 from orders o 
 left join STATUS s on (s.name=o.status)
